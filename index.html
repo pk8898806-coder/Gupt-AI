@@ -326,7 +326,7 @@
     // Application State
     let chats = JSON.parse(localStorage.getItem('gupt_ai_chats') || '[]');
     let currentChatId = null;
-    let apiKey = localStorage.getItem('gupt_ai_apikey') || 'AQ.Ab8RN6LG1ul0fbQ_a0YMNeN5EqkPOuXcSqk2EYkqRIYjjolp8w';
+    let apiKey = localStorage.getItem('gupt_ai_apikey') || '';
     let systemPrompt = localStorage.getItem('gupt_ai_system_prompt') || 'You are Gupt AI, an intelligent, fast, and helpful AI assistant created by Gupt AI team. Answer clearly and concisely.';
     let temperature = parseFloat(localStorage.getItem('gupt_ai_temp') || '0.7');
     let isGenerating = false;
