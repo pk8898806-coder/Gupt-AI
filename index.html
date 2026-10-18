@@ -536,22 +536,25 @@
       const cleanKey = apiKey.trim();
 
       try {
-        const endpointUrl = `https://googleapis.com{cleanKey}`;
+        const cleanKey = apiKey.trim();
+            const endpointUrl = `https://googleapis.com{cleanKey}`;
 
-        const apiMessages = chat.messages.map(m => ({
-          role: m.role === 'user' ? 'user' : 'model',
-          parts: [{ text: m.content }]
-        }));
+            const apiMessages = chat.messages.map(m => ({
+                role: m.role === 'user' ? 'user' : 'model',
+                parts: [{ text: m.content }]
+            }));
 
-        const response = await fetch(endpointUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: apiMessages,
-            systemInstruction: { parts: [{ text: systemPrompt }] },
-            generationConfig: { temperature: temperature }
-          })
-        });
+            const response = await fetch(endpointUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    contents: apiMessages,
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                    generationConfig: { temperature: temperature }
+                })
+            });
 
         const data = await response.json();
         const msgDiv = document.getElementById(assistantMsgId);
